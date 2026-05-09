@@ -1,0 +1,44 @@
+<div class="container auth-container">
+  <h1 class="auth-title">Join the Archive</h1>
+  <p class="auth-subtitle">Start sharing your thoughts with the world.</p>
+
+  @if (error()) {
+  <div class="auth-error">
+    {{ error() }}
+  </div>
+  }
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="input-group">
+      <label>Display Name</label>
+      <input type="text" formControlName="name" placeholder="How should we call you?">
+      @if (form.get('name')?.touched && form.get('name')?.invalid) {
+      <p class="error-text">Name is required (min 3 chars)</p>
+      }
+    </div>
+
+    <div class="input-group">
+      <label>Email Address</label>
+      <input type="email" formControlName="email" placeholder="name@domain.com">
+      @if (form.get('email')?.touched && form.get('email')?.invalid) {
+      <p class="error-text">Valid email is required</p>
+      }
+    </div>
+
+    <div class="input-group">
+      <label>Choose Password</label>
+      <input type="password" formControlName="password" placeholder="••••••••">
+      @if (form.get('password')?.touched && form.get('password')?.invalid) {
+      <p class="error-text">Minimum 6 characters required</p>
+      }
+    </div>
+
+    <button type="submit" class="btn auth-submit" [disabled]="loading() || form.invalid">
+      {{ loading() ? 'Creating Account...' : 'Get Started' }}
+    </button>
+  </form>
+
+  <p class="auth-switch">
+    Already a member? <a routerLink="/signin" class="auth-link">Sign in</a>
+  </p>
+</div>

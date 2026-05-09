@@ -1,0 +1,52 @@
+<div class="container feed-container">
+  <div class="feed-header">
+    <div>
+      <h1 class="feed-title">The Feed</h1>
+      <p style="color: var(--text-secondary); margin-top: 0.5rem;">Explore the latest insights from the community.</p>
+    </div>
+    @if (user()) {
+    <a routerLink="/compose" class="btn">
+      <span style="margin-right: 8px;">+</span> New Entry
+    </a>
+    }
+  </div>
+
+  @if (loading()) {
+  <app-loader label="Fetching latest entries"></app-loader>
+  } @else if (error()) {
+  <div class="error-state">
+    <h3 style="color: var(--error);">System Error</h3>
+    <p>{{ error() }}</p>
+    <button (click)="load()" class="btn-outline" style="margin-top: 1.5rem;">Try Again</button>
+  </div>
+  } @else if (entries().length === 0) {
+  <div class="empty-state">
+    <h3>No Stories Yet</h3>
+    <p>The archives are currently empty. Be the first to write something.</p>
+  </div>
+  } @else {
+  <div class="entries-grid">
+    @for (entry of entries(); track entry.id) {
+    <div class="card entry-card">
+      <div class="entry-header">
+        <h2 class="entry-title">{{ entry.title }}</h2>
+        <span class="entry-date">{{ entry.createdAt | date:'mediumDate' }}</span>
+      </div>
+      <p class="entry-content">{{ entry.content }}</p>
+      <div class="entry-footer">
+        <span class="entry-author">
+          <small style="font-weight: 400; color: var(--text-secondary);">Written by</small> {{ entry.authorName }}
+        </span>
+
+        @if (user()?.id === entry.authorId) {
+        <div class="entry-actions">
+          <a [routerLink]="['/compose', entry.id]" class="action-link">Edit</a>
+          <button (click)="onDelete(entry.id)" class="action-btn">Delete</button>
+        </div>
+        }
+      </div>
+    </div>
+    }
+  </div>
+  }
+</div>

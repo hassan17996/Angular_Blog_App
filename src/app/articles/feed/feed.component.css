@@ -1,0 +1,150 @@
+.feed-container {
+  margin-top: 4rem;
+  animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.feed-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 4rem;
+  border-left: 4px solid var(--accent);
+  /* علامة مميزة بجانب العنوان */
+  padding-left: 1.5rem;
+}
+
+.feed-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin: 0;
+}
+
+.entries-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+  /* كروت عريضة ومريحة */
+  gap: 2.5rem;
+}
+
+.entry-card {
+  position: relative;
+  overflow: hidden;
+}
+
+/* إضافة لمسة خفيفة خلف الكارت */
+.entry-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 0;
+  background: var(--accent);
+  transition: var(--transition);
+}
+
+.entry-card:hover::before {
+  height: 100%;
+}
+
+.entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* توازى مع العنوان والتاريخ */
+  margin-bottom: 1.5rem;
+}
+
+.entry-title {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin-bottom: 0;
+}
+
+.entry-date {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+}
+
+.entry-content {
+  margin-bottom: 2rem;
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  /* عرض أول 3 سطور بس */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.entry-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--border-color);
+  padding-top: 1.2rem;
+}
+
+.entry-author {
+  font-size: 0.85rem;
+  color: var(--accent);
+  font-weight: 600;
+  text-transform: none;
+  /* عشان يبقى شكلها ألطف */
+}
+
+.entry-actions {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.action-link,
+.action-btn {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--text-secondary);
+  transition: var(--transition);
+}
+
+.action-link:hover {
+  color: var(--accent);
+}
+
+.action-btn {
+  background: none;
+  border: none;
+  color: var(--error);
+  opacity: 0.7;
+}
+
+.action-btn:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+/* تحسين شكل الـ Empty state والـ Error */
+.empty-state,
+.error-state {
+  border: 1px solid var(--border-color);
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 20px;
+  color: var(--text-secondary);
+}

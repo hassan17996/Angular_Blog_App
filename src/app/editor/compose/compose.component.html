@@ -1,0 +1,42 @@
+<div class="container compose-container">
+  <h1 class="compose-title">
+    {{ id() ? 'Edit Archive Entry' : 'Compose New Story' }}
+  </h1>
+
+  @if (loading()) {
+  <app-loader label="Opening editor"></app-loader>
+  } @else {
+  @if (error()) {
+  <div class="compose-error">
+    <strong>Error:</strong> {{ error() }}
+  </div>
+  }
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="compose-form">
+    <div class="input-group">
+      <label>HEADLINE</label>
+      <input type="text" formControlName="title" placeholder="Enter a title that captures attention..."
+        autocomplete="off">
+      @if (form.get('title')?.touched && form.get('title')?.invalid) {
+      <p class="error-text">Headline needs to be at least 3 characters.</p>
+      }
+    </div>
+
+    <div class="input-group">
+      <label>THE NARRATIVE</label>
+      <textarea formControlName="content"
+        placeholder="Write your story here... (Markdown-ish support coming soon)"></textarea>
+      @if (form.get('content')?.touched && form.get('content')?.invalid) {
+      <p class="error-text">Content is too short. Share more of your thoughts.</p>
+      }
+    </div>
+
+    <div class="compose-actions">
+      <a routerLink="/feed" class="btn btn-cancel">Discard</a>
+      <button type="submit" class="btn btn-publish" [disabled]="saving() || form.invalid">
+        {{ saving() ? 'Syncing...' : (id() ? 'Update Entry' : 'Publish to Feed') }}
+      </button>
+    </div>
+  </form>
+  }
+</div>

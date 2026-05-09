@@ -1,0 +1,114 @@
+.compose-container {
+  max-width: 900px;
+  margin: 4rem auto;
+  padding: 0 2rem;
+  animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.compose-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 3rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+/* تحسين شكل الـ Inputs داخل المحرر */
+.compose-form .input-group {
+  margin-bottom: 2.5rem;
+}
+
+.compose-form label {
+  font-size: 0.9rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+.compose-form input[type="text"] {
+  font-size: 1.8rem;
+  font-weight: 700;
+  background: transparent;
+  border: none;
+  border-left: 3px solid var(--border-color);
+  padding: 0.5rem 1.5rem;
+  color: var(--text-primary);
+  transition: var(--transition);
+}
+
+.compose-form input[type="text"]:focus {
+  border-left-color: var(--accent);
+  outline: none;
+}
+
+.compose-form textarea {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  color: var(--text-secondary);
+  resize: vertical;
+  min-height: 400px;
+  transition: var(--transition);
+}
+
+.compose-form textarea:focus {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--accent);
+  outline: none;
+}
+
+.compose-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1.5rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.btn-publish {
+  background: var(--accent);
+  color: var(--bg-main);
+  padding: 0.8rem 2.5rem;
+  font-weight: 700;
+  border-radius: 8px;
+}
+
+.btn-cancel {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  padding: 0.8rem 2rem;
+}
+
+.btn-cancel:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+}
+
+.compose-error {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--error);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+  border-left: 4px solid var(--error);
+}

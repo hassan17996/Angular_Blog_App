@@ -1,0 +1,36 @@
+<div class="container auth-container">
+  <h1 class="auth-title">Welcome Back</h1>
+  <p class="auth-subtitle">Enter your credentials to access your archive.</p>
+
+  @if (error()) {
+  <div class="auth-error">
+    {{ error() }}
+  </div>
+  }
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="input-group">
+      <label>Email Address</label>
+      <input type="email" formControlName="email" placeholder="name@domain.com">
+      @if (form.get('email')?.touched && form.get('email')?.invalid) {
+      <p class="error-text">Please enter a valid email</p>
+      }
+    </div>
+
+    <div class="input-group">
+      <label>Password</label>
+      <input type="password" formControlName="password" placeholder="••••••••">
+      @if (form.get('password')?.touched && form.get('password')?.invalid) {
+      <p class="error-text">Password is too short</p>
+      }
+    </div>
+
+    <button type="submit" class="btn auth-submit" [disabled]="loading() || form.invalid">
+      {{ loading() ? 'Verifying...' : 'Sign In' }}
+    </button>
+  </form>
+
+  <p class="auth-switch">
+    New writer? <a routerLink="/signup" class="auth-link">Create account</a>
+  </p>
+</div>

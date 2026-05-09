@@ -1,0 +1,28 @@
+<header class="main-header">
+  <div class="container header-container">
+    <a routerLink="/" class="logo">B L O G</a>
+    
+    <nav class="nav-links">
+      <a routerLink="/feed" routerLinkActive="active">Archive</a>
+      
+      @if (user()) {
+        <a routerLink="/compose" routerLinkActive="active">Write</a>
+        <div class="user-section">
+          <span>{{ user()?.name }}</span>
+          <button (click)="logout()" class="logout-btn">LOGOUT</button>
+        </div>
+      } @else {
+        <a routerLink="/signin" routerLinkActive="active">Sign In</a>
+        <a routerLink="/signup" class="btn signup-btn">Sign Up</a>
+      }
+    </nav>
+  </div>
+</header>
+
+<main>
+  <router-outlet></router-outlet>
+</main>
+
+<footer class="main-footer">
+  &copy; 2026 THE ARCHIVE / ALL RIGHTS RESERVED
+</footer>

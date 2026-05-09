@@ -1,0 +1,36 @@
+{
+  "users": [
+    {
+      "id": "user-1",
+      "name": "Dev Team",
+      "email": "dev@example.com",
+      "password": "password123"
+    }
+  ],
+  "articles": [
+    {
+      "id": "entry-1",
+      "title": "Minimalist Web Design",
+      "content": "Minimalism in web design is about removing unnecessary elements and focusing on the core content. It provides a clean, fast, and professional experience for users who value simplicity.",
+      "authorId": "user-1",
+      "authorName": "Dev Team",
+      "createdAt": "2026-05-01T10:00:00.000Z"
+    },
+    {
+      "id": "entry-2",
+      "title": "Why Angular 21 is a Game Changer",
+      "content": "With the introduction of new reactivity primitives like Signals and a streamlined control flow, Angular 21 makes it easier than ever to build high-performance applications with less boilerplate.",
+      "authorId": "user-1",
+      "authorName": "Dev Team",
+      "createdAt": "2026-05-05T15:30:00.000Z"
+    },
+    {
+      "id": "entry-3",
+      "title": "Clean Code Practices",
+      "content": "Writing clean code is essential for long-term maintainability. This includes using descriptive names, avoiding redundant comments, and keeping functions small and focused on a single task.",
+      "authorId": "user-1",
+      "authorName": "Dev Team",
+      "createdAt": "2026-05-08T20:15:00.000Z"
+    }
+  ]
+}
